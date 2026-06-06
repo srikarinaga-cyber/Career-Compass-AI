@@ -13,7 +13,8 @@ import {
   Zap,
   Globe2,
   TrendingUp,
-  Brain
+  Brain,
+  ChevronRight
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -22,42 +23,50 @@ const features = [
   {
     icon: <Target className="w-6 h-6 text-primary" />,
     title: "Personalized Placement Roadmap",
-    description: "AI builds your 90-day plan based on your skills"
+    description: "AI builds your 90-day plan based on your skills",
+    link: "/onboarding"
   },
   {
     icon: <Video className="w-6 h-6 text-primary" />,
     title: "AI Mock Interviews",
-    description: "Practice with GPT-powered interviewers, get instant feedback"
+    description: "Practice with GPT-powered interviewers, get instant feedback",
+    link: "/assessment"
   },
   {
     icon: <BarChart className="w-6 h-6 text-primary" />,
     title: "Skill Gap Analysis",
-    description: "Know exactly what to learn and in what order"
+    description: "Know exactly what to learn and in what order",
+    link: "/assessment"
   },
   {
     icon: <BookOpen className="w-6 h-6 text-primary" />,
     title: "Resume Review",
-    description: "AI reviews and scores your resume, suggests improvements"
+    description: "AI reviews and scores your resume, suggests improvements",
+    link: "/dashboard"
   },
   {
     icon: <Zap className="w-6 h-6 text-primary" />,
     title: "Project Recommendations",
-    description: "Get project ideas matched to your target companies"
+    description: "Get project ideas matched to your target companies",
+    link: "/dashboard"
   },
   {
     icon: <Brain className="w-6 h-6 text-primary" />,
     title: "Aptitude Preparation",
-    description: "Quantitative, logical reasoning, verbal ability practice"
+    description: "Quantitative, logical reasoning, verbal ability practice",
+    link: "/assessment"
   },
   {
     icon: <Globe2 className="w-6 h-6 text-primary" />,
     title: "Telugu Language Support",
-    description: "Learn in your native language, no barriers"
+    description: "Learn in your native language, no barriers",
+    link: "/onboarding"
   },
   {
     icon: <Activity className="w-6 h-6 text-primary" />,
     title: "Daily Progress Tracking",
-    description: "Streak system, daily goals, leaderboard"
+    description: "Streak system, daily goals, leaderboard",
+    link: "/dashboard"
   }
 ];
 
@@ -168,7 +177,7 @@ export default function Home() {
         </section>
 
         {/* Features */}
-        <section id="features" className="py-24 bg-gray-50/50 dark:bg-zinc-900/50">
+        <section id="features" className="py-24 bg-white/40 dark:bg-zinc-900/50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to crack top companies</h2>
@@ -177,13 +186,21 @@ export default function Home() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, i) => (
-                <div key={i} className="bg-background p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center mb-4">
-                    {feature.icon}
+                <Link key={i} href={feature.link}>
+                  <div
+                    data-testid={`card-feature-${i}`}
+                    className="group bg-white/80 dark:bg-zinc-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-200 cursor-pointer h-full"
+                  >
+                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
+                      {feature.icon}
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">{feature.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+                    <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Get Started <ArrowRight className="w-3 h-3" />
+                    </div>
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -192,24 +209,52 @@ export default function Home() {
         {/* How It Works */}
         <section id="how-it-works" className="py-24 relative">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Your Path to Placement</h2>
-            
-            <div className="grid md:grid-cols-3 gap-8 relative">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Your Path to Placement</h2>
+              <p className="text-lg text-muted-foreground">Six simple steps from where you are to where you want to be — in 90 days.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 relative">
               {[
-                { step: 1, title: "Create Profile", desc: "Share your background and target roles" },
-                { step: 2, title: "Take Assessment", desc: "Evaluate your current DSA & Dev skills" },
-                { step: 3, title: "Get Roadmap", desc: "Receive your custom 90-day learning path" },
-                { step: 4, title: "Practice", desc: "Do AI mock interviews and solve problems" },
-                { step: 5, title: "Track Progress", desc: "Maintain your streak and level up" },
-                { step: 6, title: "Get Placed", desc: "Ready for top tech company interviews" }
+                { step: 1, title: "Create Profile", desc: "Share your background, branch, year, and target role so we can personalise everything.", link: "/onboarding", cta: "Create Profile", color: "from-blue-500 to-blue-600" },
+                { step: 2, title: "Take Assessment", desc: "Evaluate your current DSA, aptitude, and communication skills in 25 minutes.", link: "/assessment", cta: "Start Assessment", color: "from-indigo-500 to-indigo-600" },
+                { step: 3, title: "Get Your Roadmap", desc: "Receive a custom week-by-week 90-day learning path built around your gaps.", link: "/dashboard", cta: "View Roadmap", color: "from-violet-500 to-violet-600" },
+                { step: 4, title: "Practice Interviews", desc: "Do AI-powered mock interviews and get instant feedback on every answer.", link: "/assessment", cta: "Practice Now", color: "from-purple-500 to-purple-600" },
+                { step: 5, title: "Track Progress", desc: "Maintain daily streaks, hit weekly goals, and watch your readiness score climb.", link: "/dashboard", cta: "View Dashboard", color: "from-fuchsia-500 to-fuchsia-600" },
+                { step: 6, title: "Get Placed!", desc: "Walk into interviews confident, prepared, and ready to land your dream job.", link: "/onboarding", cta: "Get Started", color: "from-pink-500 to-rose-500" }
               ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center text-center relative z-10">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-white flex items-center justify-center text-2xl font-bold mb-4 shadow-lg">
-                    {item.step}
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="relative"
+                  data-testid={`card-step-${item.step}`}
+                >
+                  <div className="bg-white/80 dark:bg-zinc-900 rounded-2xl border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all duration-200 p-6 h-full flex flex-col">
+                    {/* Step badge */}
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center text-xl font-extrabold mb-5 shadow-md`}>
+                      {item.step}
+                    </div>
+                    <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">{item.desc}</p>
+                    <Link href={item.link}>
+                      <button
+                        data-testid={`button-step-${item.step}`}
+                        className={`mt-5 w-full py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r ${item.color} hover:opacity-90 hover:shadow-md transition-all flex items-center justify-center gap-2`}
+                      >
+                        {item.cta} <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </Link>
                   </div>
-                  <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.desc}</p>
-                </div>
+                  {/* Connector arrow (not after last) */}
+                  {i % 3 !== 2 && (
+                    <div className="hidden md:flex absolute top-10 -right-3 z-10 w-6 items-center justify-center">
+                      <ChevronRight className="w-5 h-5 text-blue-300" />
+                    </div>
+                  )}
+                </motion.div>
               ))}
             </div>
           </div>
