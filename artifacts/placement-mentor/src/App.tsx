@@ -7,15 +7,17 @@ import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
 import Assessment from "@/pages/assessment";
 import Onboarding from "@/pages/onboarding";
+import MockInterview from "@/pages/mock-interview";
+import Roadmap from "@/pages/roadmap";
 import { useProfile } from "@/hooks/use-profile";
 
 const queryClient = new QueryClient();
 
-function ProtectedDashboard() {
+function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { profile, loading } = useProfile();
   if (loading) return null;
   if (!profile) return <Redirect to="/onboarding" />;
-  return <Dashboard />;
+  return <Component />;
 }
 
 function Router() {
@@ -23,8 +25,16 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/onboarding" component={Onboarding} />
-      <Route path="/dashboard" component={ProtectedDashboard} />
+      <Route path="/dashboard">
+        {() => <ProtectedRoute component={Dashboard} />}
+      </Route>
       <Route path="/assessment" component={Assessment} />
+      <Route path="/mock-interview">
+        {() => <ProtectedRoute component={MockInterview} />}
+      </Route>
+      <Route path="/roadmap">
+        {() => <ProtectedRoute component={Roadmap} />}
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );

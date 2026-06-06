@@ -78,15 +78,15 @@ export default function Dashboard() {
         
         <nav className="flex-1 px-4 space-y-1">
           {[
-            { icon: <LayoutDashboard size={18} />, label: "Dashboard", active: true },
-            { icon: <Map size={18} />, label: "My Roadmap" },
-            { icon: <Video size={18} />, label: "Practice Interviews" },
+            { icon: <LayoutDashboard size={18} />, label: "Dashboard", link: "/dashboard", active: true },
+            { icon: <Map size={18} />, label: "My Roadmap", link: "/roadmap" },
+            { icon: <Video size={18} />, label: "Practice Interviews", link: "/mock-interview" },
             { icon: <CheckSquare size={18} />, label: "Skill Assessment", link: "/assessment" },
-            { icon: <FolderGit2 size={18} />, label: "Projects" },
-            { icon: <FileText size={18} />, label: "Resume" },
-            { icon: <Trophy size={18} />, label: "Leaderboard" },
+            { icon: <FolderGit2 size={18} />, label: "Projects", link: "#" },
+            { icon: <FileText size={18} />, label: "Resume", link: "#" },
+            { icon: <Trophy size={18} />, label: "Leaderboard", link: "#" },
           ].map((item, i) => (
-            <Link key={i} href={item.link || "#"} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${item.active ? "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" : "text-muted-foreground hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-foreground"}`}>
+            <Link key={i} href={item.link} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${item.active ? "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" : "text-muted-foreground hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-foreground"}`}>
               {item.icon}
               {item.label}
             </Link>

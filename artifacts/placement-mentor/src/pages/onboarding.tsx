@@ -12,12 +12,12 @@ const YEARS = ["1st Year", "2nd Year", "3rd Year", "4th Year", "Recent Graduate"
 const ROLES = ["Software Engineer", "Frontend Developer", "Backend Developer", "Full Stack Developer", "Data Analyst", "Data Scientist", "DevOps Engineer", "Other"];
 
 const AVATARS = [
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Mia",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Raj",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
-  "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun",
+  "https://api.dicebear.com/9.x/fun-emoji/svg?seed=Raj&backgroundColor=b6e3f4",
+  "https://api.dicebear.com/9.x/fun-emoji/svg?seed=Priya&backgroundColor=c0aede",
+  "https://api.dicebear.com/9.x/fun-emoji/svg?seed=Arjun&backgroundColor=d1f4d1",
+  "https://api.dicebear.com/9.x/fun-emoji/svg?seed=Ananya&backgroundColor=ffd5dc",
+  "https://api.dicebear.com/9.x/fun-emoji/svg?seed=Ravi&backgroundColor=ffe4b5",
+  "https://api.dicebear.com/9.x/fun-emoji/svg?seed=Sneha&backgroundColor=e0d7ff",
 ];
 
 type Step = 0 | 1 | 2 | 3;
