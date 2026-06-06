@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "fhhJST1aCgoluLRwynBke"
+uri = "file://artifacts/placement-mentor/public/hero.png"
+type = "image"
+title = "Students studying for placements"
+
+[[generated]]
+id = "O65ppsDu21HuovcQGNR7T"
+uri = "file://artifacts/placement-mentor/public/avatar.png"
+type = "image"
+title = "Dashboard Avatar"
+
+[[generated]]
+id = "7fKhJ9qCMW8AlJCNcPn87"
+uri = "file://artifacts/placement-mentor/public/testimonial1.png"
+type = "image"
+title = "Testimonial 1"
+
+[[generated]]
+id = "bBWCOGM-OB-ny02eXVxxX"
+uri = "file://artifacts/placement-mentor/public/testimonial2.png"
+type = "image"
+title = "Testimonial 2"
+
+[[generated]]
+id = "a-5xwBGexU3WLbHio-Jqu"
+uri = "file://artifacts/placement-mentor/public/testimonial3.png"
+type = "image"
+title = "Testimonial 3"
