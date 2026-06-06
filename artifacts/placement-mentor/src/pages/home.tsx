@@ -63,7 +63,7 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
+    <div className="min-h-screen bg-white/60 backdrop-blur-[2px] text-foreground flex flex-col font-sans">
       {/* Navbar */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">

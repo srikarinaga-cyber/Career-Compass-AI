@@ -43,7 +43,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/50 dark:bg-zinc-950 flex font-sans text-foreground">
+    <div className="min-h-screen bg-transparent flex font-sans text-foreground">
       {/* Sidebar */}
       <aside className="w-64 bg-white dark:bg-zinc-900 border-r hidden md:flex flex-col h-screen sticky top-0">
         <div className="p-6">

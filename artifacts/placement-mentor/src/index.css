@@ -199,11 +199,24 @@
   --chart-5: 340 75% 55%;
 }
 
+html {
+  background-color: #f4f3ff;
+  background-image:
+    radial-gradient(at 0% 0%,   hsla(217, 90%, 72%, 0.35) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, hsla(280, 85%, 72%, 0.30) 0px, transparent 50%),
+    radial-gradient(at 55% 35%, hsla(199, 90%, 74%, 0.20) 0px, transparent 45%),
+    radial-gradient(at 0% 100%, hsla(340, 85%, 74%, 0.25) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(262, 90%, 72%, 0.28) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, hsla(221, 80%, 78%, 0.20) 0px, transparent 45%);
+  background-attachment: fixed;
+}
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased text-foreground;
+    background: transparent;
   }
 }

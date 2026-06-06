@@ -62,7 +62,7 @@ export default function Onboarding() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 flex flex-col items-center justify-center p-4 font-sans">
+    <div className="min-h-screen bg-transparent flex flex-col items-center justify-center p-4 font-sans">
       {/* Logo */}
       <div className="flex items-center gap-2 mb-10">
         <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
