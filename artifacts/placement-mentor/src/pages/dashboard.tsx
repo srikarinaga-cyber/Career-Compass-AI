@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { 
   LayoutDashboard, 
   Map, 
@@ -17,14 +17,31 @@ import {
   TrendingUp,
   BrainCircuit,
   MessageCircle,
-  Calculator
+  Calculator,
+  LogOut
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
+import { useProfile } from "@/hooks/use-profile";
+
+const getGreeting = () => {
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning";
+  if (h < 17) return "Good afternoon";
+  return "Good evening";
+};
 
 export default function Dashboard() {
+  const { profile, firstName, clearProfile } = useProfile();
+  const [, setLocation] = useLocation();
+
+  const handleLogout = () => {
+    clearProfile();
+    setLocation("/");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50/50 dark:bg-zinc-950 flex font-sans text-foreground">
       {/* Sidebar */}
@@ -41,8 +58,25 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
+
+        {/* Profile summary */}
+        {profile && (
+          <div className="px-4 mb-4">
+            <div className="flex items-center gap-3 px-3 py-3 rounded-xl bg-blue-50/80 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/40">
+              <img
+                src={profile.avatar}
+                alt={profile.name}
+                className="w-9 h-9 rounded-full border-2 border-blue-200 bg-white"
+              />
+              <div className="min-w-0">
+                <p className="text-sm font-bold text-foreground truncate">{profile.name}</p>
+                <p className="text-xs text-muted-foreground truncate">{profile.college}</p>
+              </div>
+            </div>
+          </div>
+        )}
         
-        <nav className="flex-1 px-4 space-y-1 mt-4">
+        <nav className="flex-1 px-4 space-y-1">
           {[
             { icon: <LayoutDashboard size={18} />, label: "Dashboard", active: true },
             { icon: <Map size={18} />, label: "My Roadmap" },
@@ -59,11 +93,19 @@ export default function Dashboard() {
           ))}
         </nav>
         
-        <div className="p-4 mt-auto border-t dark:border-zinc-800">
+        <div className="p-4 mt-auto border-t dark:border-zinc-800 space-y-1">
           <Link href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-foreground transition-colors">
             <Settings size={18} />
             Settings
           </Link>
+          <button
+            onClick={handleLogout}
+            data-testid="button-logout"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 transition-colors"
+          >
+            <LogOut size={18} />
+            Sign Out
+          </button>
         </div>
       </aside>
 
@@ -80,10 +122,16 @@ export default function Dashboard() {
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" className="relative text-muted-foreground">
               <Bell size={20} />
-              <span className="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-zinc-900"></span>
+              <span className="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-zinc-900" />
             </Button>
-            <div className="h-8 w-8 rounded-full overflow-hidden border">
-              <img src="/avatar.png" alt="Ravi" className="w-full h-full object-cover" />
+            <div className="h-8 w-8 rounded-full overflow-hidden border-2 border-blue-200 bg-white">
+              {profile?.avatar ? (
+                <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover" data-testid="img-avatar-header" />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                  {firstName.charAt(0)}
+                </div>
+              )}
             </div>
           </div>
         </header>
@@ -93,8 +141,11 @@ export default function Dashboard() {
           {/* Welcome Banner */}
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white shadow-lg flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold mb-1">Good morning, Ravi!</h1>
+              <h1 className="text-2xl font-bold mb-1" data-testid="text-welcome">
+                {getGreeting()}, {firstName || "there"}!
+              </h1>
               <p className="text-blue-100 flex items-center gap-2">
+                {profile?.targetRole ? `Target: ${profile.targetRole} · ` : ""}
                 You're on a 7-day learning streak <Flame className="w-5 h-5 text-orange-400 fill-orange-400" /> Keep it up!
               </p>
             </div>
@@ -187,7 +238,7 @@ export default function Dashboard() {
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <div className="space-y-1">
                     <CardTitle>Recommended Projects</CardTitle>
-                    <CardDescription>Based on your target role (Frontend Engineer)</CardDescription>
+                    <CardDescription>Based on your target role ({profile?.targetRole || "Software Engineer"})</CardDescription>
                   </div>
                   <Button variant="ghost" size="sm" className="text-primary">View All <ChevronRight size={16} /></Button>
                 </CardHeader>
@@ -226,7 +277,9 @@ export default function Dashboard() {
                   <div className="relative w-32 h-32 mx-auto flex items-center justify-center rounded-full border-8 border-primary/20 border-t-primary">
                     <div className="text-3xl font-extrabold text-primary">78</div>
                   </div>
-                  <p className="text-sm mt-4 font-medium text-foreground">You are in the top 20% of your college!</p>
+                  <p className="text-sm mt-4 font-medium text-foreground">
+                    You are in the top 20% of {profile?.college || "your college"}!
+                  </p>
                 </CardContent>
               </Card>
 

@@ -83,7 +83,7 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-4">
             <Link href="/dashboard" className="text-sm font-medium hover:underline hidden sm:inline-block">Sign In</Link>
-            <Link href="/dashboard">
+            <Link href="/onboarding">
               <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 shadow-lg shadow-purple-500/20">
                 Get Started Free
               </Button>
@@ -118,7 +118,7 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link href="/dashboard">
+                <Link href="/onboarding">
                   <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25 hover:scale-105 transition-transform text-base h-12 px-8">
                     Get Started Free
                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -284,7 +284,7 @@ export default function Home() {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Start Your Placement Journey?</h2>
             <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Join thousands of students who have already secured their dream jobs using PlacementAI.</p>
-            <Link href="/dashboard">
+            <Link href="/onboarding">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg h-14 px-8 shadow-xl">
                 Get Started Free — No Credit Card Required
               </Button>

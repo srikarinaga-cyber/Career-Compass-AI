@@ -1,4 +1,4 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,14 +6,24 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
 import Assessment from "@/pages/assessment";
+import Onboarding from "@/pages/onboarding";
+import { useProfile } from "@/hooks/use-profile";
 
 const queryClient = new QueryClient();
+
+function ProtectedDashboard() {
+  const { profile, loading } = useProfile();
+  if (loading) return null;
+  if (!profile) return <Redirect to="/onboarding" />;
+  return <Dashboard />;
+}
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/onboarding" component={Onboarding} />
+      <Route path="/dashboard" component={ProtectedDashboard} />
       <Route path="/assessment" component={Assessment} />
       <Route component={NotFound} />
     </Switch>
