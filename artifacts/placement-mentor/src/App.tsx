@@ -9,6 +9,8 @@ import Assessment from "@/pages/assessment";
 import Onboarding from "@/pages/onboarding";
 import MockInterview from "@/pages/mock-interview";
 import Roadmap from "@/pages/roadmap";
+import Leaderboard from "@/pages/leaderboard";
+import About from "@/pages/about";
 import { useProfile } from "@/hooks/use-profile";
 import { LanguageProvider } from "@/contexts/language-context";
 
@@ -25,17 +27,17 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/about" component={About} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/dashboard">
         {() => <ProtectedRoute component={Dashboard} />}
       </Route>
       <Route path="/assessment" component={Assessment} />
-      <Route path="/mock-interview">
-        {() => <ProtectedRoute component={MockInterview} />}
-      </Route>
+      <Route path="/mock-interview" component={MockInterview} />
       <Route path="/roadmap">
         {() => <ProtectedRoute component={Roadmap} />}
       </Route>
+      <Route path="/leaderboard" component={Leaderboard} />
       <Route component={NotFound} />
     </Switch>
   );
