@@ -102,6 +102,7 @@ export default function Home() {
             <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">{t.nav_howItWorks}</a>
             <a href="#success-stories" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">{t.nav_successStories}</a>
             <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">{t.nav_faq}</a>
+            <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About Us</Link>
           </nav>
 
           <div className="flex items-center gap-3">
