@@ -10,6 +10,7 @@ import Onboarding from "@/pages/onboarding";
 import MockInterview from "@/pages/mock-interview";
 import Roadmap from "@/pages/roadmap";
 import { useProfile } from "@/hooks/use-profile";
+import { LanguageProvider } from "@/contexts/language-context";
 
 const queryClient = new QueryClient();
 
@@ -43,12 +44,14 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
