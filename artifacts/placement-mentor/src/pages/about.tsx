@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
   ArrowLeft, Heart, Target, Users, Zap, Globe2, Award, BookOpen,
-  Linkedin, Github, Mail, ArrowRight, Star, Building2, GraduationCap
+  Mail, ArrowRight, Star, Building2, GraduationCap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -196,11 +196,6 @@ export default function About() {
                   {member.avatar}
                 </div>
                 <h3 className="font-bold">{member.name}</h3>
-                <p className="text-xs text-primary font-semibold mt-0.5 mb-3">{member.role}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
-                <a href={member.linkedin} className="mt-4 inline-flex items-center gap-1 text-xs text-blue-600 hover:underline">
-                  <Linkedin className="w-3 h-3" /> LinkedIn
-                </a>
               </motion.div>
             ))}
           </div>
