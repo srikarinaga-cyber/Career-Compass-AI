@@ -8,48 +8,48 @@ import { Button } from "@/components/ui/button";
 
 const team = [
   {
-    name: "Ravi Kumar",
+    name: "Srikari",
     role: "Co-founder & CEO",
-    bio: "Ex-Amazon SDE. JNTU grad who cracked FAANG from a Tier-2 college. On a mission to democratise placement prep.",
-    avatar: "RK",
+    bio: "On a mission to democratise placement prep for every student — Tier-2, Tier-3, and Degree college — across India.",
+    avatar: "SK",
     gradient: "from-blue-500 to-indigo-600",
     linkedin: "#",
   },
   {
-    name: "Priya Nair",
+    name: "Bhavana",
     role: "Co-founder & Head of Product",
-    bio: "IIM Bangalore MBA. Ex-Flipkart PM. Believes every student deserves a personalised mentor, not just students at IITs.",
-    avatar: "PN",
+    bio: "Believes every student deserves a personalised mentor — not just students at NITs and IITs. Building for Bharat.",
+    avatar: "BH",
     gradient: "from-purple-500 to-pink-600",
     linkedin: "#",
   },
   {
-    name: "Aditya Menon",
+    name: "Namitha",
     role: "Lead Engineer",
-    bio: "Full-stack engineer with 6 years at Hyderabad startups. Built AI-powered feedback systems for 5,000+ students.",
-    avatar: "AM",
+    bio: "Full-stack engineer who built AI-powered feedback systems. Passionate about making tech education accessible to all.",
+    avatar: "NM",
     gradient: "from-orange-500 to-rose-500",
     linkedin: "#",
   },
   {
-    name: "Sruthi Reddy",
+    name: "Tulasi",
     role: "Head of Curriculum",
-    bio: "Former placement coordinator at JNTU. Designed interview prep programs that helped 800+ students get placed.",
-    avatar: "SR",
+    bio: "Former placement coordinator who designed interview prep programs for Tier-2, Tier-3 & Degree colleges. Helped 800+ students get placed.",
+    avatar: "TL",
     gradient: "from-green-500 to-teal-600",
     linkedin: "#",
   },
 ];
 
 const milestones = [
-  { year: "2022", title: "The Idea", desc: "Ravi and Priya met at a Hyderabad startup event and realised how broken placement prep was for non-IIT students." },
+  { year: "2022", title: "The Idea", desc: "Our founders — fresh graduates from Tier-2 colleges — met at a Hyderabad startup event and realised how broken placement prep was for non-IIT students." },
   { year: "2023", title: "First 100 Students", desc: "Launched a pilot with 3 colleges in Andhra Pradesh. 78 of the first 100 students got placed within 6 months." },
   { year: "2024", title: "AI Interview Engine", desc: "Launched the AI-powered mock interview system. Students could practise 24×7 without waiting for a mentor." },
   { year: "2025", title: "12,000+ Students", desc: "Expanded to 200+ colleges across Telangana, Andhra, Tamil Nadu and Maharashtra. 94% placement success rate." },
 ];
 
 const values = [
-  { icon: <Heart className="w-6 h-6" />, title: "Built for Bharat", desc: "We design for students from Tier-2 and Tier-3 towns — not just metros. Multi-language, mobile-first, affordable.", color: "from-pink-500 to-rose-600" },
+  { icon: <Heart className="w-6 h-6" />, title: "Built for Bharat", desc: "We design for students from Tier-2, Tier-3 and Degree colleges — not just metros. Multi-language, mobile-first, affordable.", color: "from-pink-500 to-rose-600" },
   { icon: <Target className="w-6 h-6" />, title: "Personalised, Not Generic", desc: "No one-size-fits-all plans. Every student gets a roadmap built around their current skills and target company.", color: "from-blue-500 to-indigo-600" },
   { icon: <Zap className="w-6 h-6" />, title: "AI-First Learning", desc: "We use AI not as a buzzword but to give every student instant feedback — at a fraction of human mentor costs.", color: "from-yellow-500 to-orange-600" },
   { icon: <Globe2 className="w-6 h-6" />, title: "Language Inclusive", desc: "Technical concepts explained in Telugu, Hindi, Tamil and English. Your mother tongue should never be a barrier.", color: "from-green-500 to-teal-600" },
@@ -98,8 +98,8 @@ export default function About() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              PlacementAI was founded by engineers from Tier-2 colleges who figured out the placement game the hard way.
-              We built the mentor we wished we had — and made it available to every student in India.
+              PlacementAI was founded by graduates from Tier-2 and Tier-3 colleges who figured out the placement game the hard way.
+              We built the mentor we wished we had — and made it available to every student at Tier-2, Tier-3 and Degree colleges across India.
             </p>
           </motion.div>
         </div>
@@ -233,7 +233,7 @@ export default function About() {
         <div className="flex items-center justify-center gap-6">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <Link href="/assessment" className="hover:text-white transition-colors">Assessment</Link>
-          <a href="mailto:hello@placementai.in" className="hover:text-white transition-colors flex items-center gap-1"><Mail className="w-3 h-3" /> Contact</a>
+          <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1"><Mail className="w-3 h-3" /> Contact</Link>
         </div>
         <p className="mt-3">© 2025 PlacementAI. All rights reserved.</p>
       </footer>

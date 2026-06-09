@@ -11,6 +11,9 @@ import MockInterview from "@/pages/mock-interview";
 import Roadmap from "@/pages/roadmap";
 import Leaderboard from "@/pages/leaderboard";
 import About from "@/pages/about";
+import Resume from "@/pages/resume";
+import Projects from "@/pages/projects";
+import Contact from "@/pages/contact";
 import { useProfile } from "@/hooks/use-profile";
 import { LanguageProvider } from "@/contexts/language-context";
 
@@ -28,6 +31,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/dashboard">
         {() => <ProtectedRoute component={Dashboard} />}
@@ -38,6 +42,12 @@ function Router() {
         {() => <ProtectedRoute component={Roadmap} />}
       </Route>
       <Route path="/leaderboard" component={Leaderboard} />
+      <Route path="/resume">
+        {() => <ProtectedRoute component={Resume} />}
+      </Route>
+      <Route path="/projects">
+        {() => <ProtectedRoute component={Projects} />}
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );
